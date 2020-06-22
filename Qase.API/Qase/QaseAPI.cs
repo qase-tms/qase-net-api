@@ -1,4 +1,5 @@
 ﻿using Qase.API.Qase.Model.Projects;
+using Qase.API.Qase.Model.TestCases;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,9 +25,9 @@ namespace Qase.API.Qase
       _api = QaseServiceWebApiFactory.CreateWebApi(_apiUrl);
     }
 
-    public async Task<ProjectsResponse> GetAllProjectsAsync()
+    public async Task<ProjectsResponse> GetAllProjectsAsync(int limit = 100, int offset = 0)
     {
-      return await _api.GetAllProjects(_api_token);
+      return await _api.GetAllProjects(_api_token, limit, offset);
     }
 
     public async Task<SpecificProjectResponse> GetSpecificProjectAsync(string code)
@@ -37,6 +38,11 @@ namespace Qase.API.Qase
     public async Task<CreateProjectResponse> CreateNewProjectAsync(CreateProjectRequest createProjectRequest)
     {
       return await _api.CreateNewProject(_api_token, createProjectRequest);
+    }
+
+    public async Task<TestCasesResponse> GetAllTestCasesAsync(string code, int limit = 100, int offset = 0)
+    {
+      return await _api.GetAllTestCases(_api_token, code, limit, offset);
     }
   }
 }

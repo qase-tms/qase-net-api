@@ -2,7 +2,7 @@
 
 namespace Qase.API.Qase.Model.Projects
 {
-  public partial class Entity
+  public partial class Project
   {
     [JsonProperty("title")]
     public string Title { get; set; }

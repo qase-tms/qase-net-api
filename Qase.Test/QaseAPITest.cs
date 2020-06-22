@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Qase.API.Qase;
+using Qase.API.Qase.Model;
 using Qase.API.Qase.Model.Projects;
 
 namespace Qase.Test
@@ -30,9 +31,16 @@ namespace Qase.Test
          Title = "TestNet",
          Code = "TESTNET",
          Description = "Test project .Net",
-         Access = "All",
+         Access =  AccessLevel.All,
          Group = null
       }).Result;
+    }
+
+    [TestMethod]
+    public void GetAllTestCases()
+    {
+      QaseAPI qaseAPI = new QaseAPI();
+      var project = qaseAPI.GetAllTestCasesAsync("DEMOTR").Result;
     }
   }
 }
