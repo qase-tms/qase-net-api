@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qase.API", "Qase.API\Qase.API.csproj", "{AD661095-8AA6-4C54-B141-4CB0E17DB6AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qase.Test", "Qase.Test\Qase.Test.csproj", "{97E192A1-D816-48A1-AD0B-A35253E7254F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD661095-8AA6-4C54-B141-4CB0E17DB6AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD661095-8AA6-4C54-B141-4CB0E17DB6AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD661095-8AA6-4C54-B141-4CB0E17DB6AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD661095-8AA6-4C54-B141-4CB0E17DB6AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97E192A1-D816-48A1-AD0B-A35253E7254F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E192A1-D816-48A1-AD0B-A35253E7254F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E192A1-D816-48A1-AD0B-A35253E7254F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E192A1-D816-48A1-AD0B-A35253E7254F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4A1E2B1-CC60-49DB-B667-6371C8E9C4C3}
+	EndGlobalSection
+EndGlobal
