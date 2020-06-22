@@ -2,12 +2,9 @@
 
 namespace Qase.API.Qase.Model.Projects
 {
-  public partial class ProjectsResponse
+  public partial class ProjectsResponse: BaseResponse
   {
-    [JsonProperty("status")]
-    public bool Status { get; set; }
-
     [JsonProperty("result")]
-    public Result Result { get; set; }
+    public ResultProjects Result { get; set; }
   }
 }

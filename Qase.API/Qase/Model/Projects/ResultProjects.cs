@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Qase.API.Qase.Model.Projects
 {
-  public partial class Result
+  public partial class ResultProjects
   {
     [JsonProperty("total")]
     public long Total { get; set; }

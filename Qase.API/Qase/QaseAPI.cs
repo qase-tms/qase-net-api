@@ -10,7 +10,7 @@ namespace Qase.API.Qase
   {
     readonly string _apiUrl = "https://api.qase.io/v1";
     readonly IQaseServiceWebApi _api;
-    readonly string _api_token = "";
+    readonly string _api_token = "757aa920165d8f4fff32f179bc4abe0d93268200";
 
     public QaseAPI()
     {
@@ -27,6 +27,16 @@ namespace Qase.API.Qase
     public async Task<ProjectsResponse> GetAllProjectsAsync()
     {
       return await _api.GetAllProjects(_api_token);
+    }
+
+    public async Task<SpecificProjectResponse> GetSpecificProjectAsync(string code)
+    {
+      return await _api.GetSpecificProject(_api_token, code);
+    }
+
+    public async Task<CreateProjectResponse> CreateNewProjectAsync(CreateProjectRequest createProjectRequest)
+    {
+      return await _api.CreateNewProject(_api_token, createProjectRequest);
     }
   }
 }
