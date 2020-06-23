@@ -14,7 +14,7 @@ namespace Qase.API.Qase.Model.Projects
     public string Description { get; set; }
 
     [JsonProperty("access")]
-    public AccessLevel Access { get; set; }
+    public string Access { get; set; }
 
     [JsonProperty("group")]
     public string Group { get; set; }

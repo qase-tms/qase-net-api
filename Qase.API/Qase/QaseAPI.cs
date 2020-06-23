@@ -44,5 +44,10 @@ namespace Qase.API.Qase
     {
       return await _api.GetAllTestCases(_api_token, code, limit, offset);
     }
+
+    public async Task<SpecificTestCaseResponse> GetSpecificTestCaseAsync(string code, int id)
+    {
+      return await _api.GetSpecificTestCase(_api_token, code, id);
+    }
   }
 }

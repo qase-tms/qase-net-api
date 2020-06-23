@@ -40,5 +40,15 @@ namespace Qase.API.Qase
     /// <returns></returns>
     [Get("/case/{code}?limit={limit}&offset={offset}")]
     Task<TestCasesResponse> GetAllTestCases([Header("Token")] string api_token, string code, int limit, int offset);
+
+    /// <summary>
+    /// Get a specific test case
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Get("/case/{code}/{id}")]
+    Task<SpecificTestCaseResponse> GetSpecificTestCase([Header("Token")] string api_token, string code, int id);
   }
 }
