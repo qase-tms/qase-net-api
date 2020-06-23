@@ -18,7 +18,7 @@ namespace Qase.Test
       QaseAPI qaseAPI = new QaseAPI();
       try
       {
-        var testCases = qaseAPI.GetAllTestCasesAsync("CFT").Result;
+        var testCases = qaseAPI.GetAllTestCasesAsync("TEST").Result;
       }
       catch (WebApiException ex)
       {
@@ -35,7 +35,7 @@ namespace Qase.Test
     public void GetSpecificTestCase()
     {
       QaseAPI qaseAPI = new QaseAPI();
-      var testCase = qaseAPI.GetSpecificTestCaseAsync("CFT", 1).Result;
+      var testCase = qaseAPI.GetSpecificTestCaseAsync("TEST", 1).Result;
     }
 
 
@@ -44,7 +44,7 @@ namespace Qase.Test
     {
       QaseAPI qaseAPI = new QaseAPI();
 
-      var testCase = qaseAPI.DeleteTestCaseAsync("CFT", 2).Result;
+      var testCase = qaseAPI.DeleteTestCaseAsync("TEST", 1).Result;
 
     }
   }

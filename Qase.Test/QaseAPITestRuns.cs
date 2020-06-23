@@ -47,9 +47,9 @@ namespace Qase.Test
       var cases = new List<int>();
       cases.Add(1);
 
-      var id = qaseAPI.CreateNewTestRunAsync("CFT", new CreateTestRunRequest
+      var id = qaseAPI.CreateNewTestRunAsync("TEST", new CreateTestRunRequest
       {
-        Title = "TestNet",
+        Title = "TestNet2",
         Description = "Test project .Net",
         Cases = cases
       }).Result
@@ -57,11 +57,11 @@ namespace Qase.Test
     }
 
     [TestMethod]
-    public void DeleteTestCase()
+    public void DeleteTestRun()
     {
       QaseAPI qaseAPI = new QaseAPI();
 
-      var resp = qaseAPI.DeleteTestRunAsync("CFT", 4).Result;
+      var resp = qaseAPI.DeleteTestRunAsync("TEST", 1).Result;
     }
   }
 }

@@ -34,7 +34,7 @@ namespace Qase.Test
     public void GetSpecificProject()
     {
       QaseAPI qaseAPI = new QaseAPI();
-      var project = qaseAPI.GetSpecificProjectAsync("CFT").Result;
+      var project = qaseAPI.GetSpecificProjectAsync("TEST").Result;
     }
 
     [TestMethod]

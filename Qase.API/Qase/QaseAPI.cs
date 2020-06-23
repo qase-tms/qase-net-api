@@ -1,6 +1,7 @@
 ﻿using Qase.API.Qase.Model;
 using Qase.API.Qase.Model.Projects;
 using Qase.API.Qase.Model.TestCases;
+using Qase.API.Qase.Model.TestRunResults;
 using Qase.API.Qase.Model.TestRuns;
 using System.Threading.Tasks;
 
@@ -25,7 +26,6 @@ namespace Qase.API.Qase
     }
 
     //Projects
-
     public async Task<ProjectsResponse> GetAllProjectsAsync(int limit = 100, int offset = 0)
     {
       return await _api.GetAllProjects(_api_token, limit, offset);
@@ -42,7 +42,6 @@ namespace Qase.API.Qase
     }
 
     //Test cases
-
     public async Task<TestCasesResponse> GetAllTestCasesAsync(string code, int limit = 100, int offset = 0)
     {
       return await _api.GetAllTestCases(_api_token, code, limit, offset);
@@ -77,6 +76,32 @@ namespace Qase.API.Qase
     public async Task<TestRunResponse> DeleteTestRunAsync(string code, int id)
     {
       return await _api.DeleteTestRun(_api_token, code, id);
+    }
+
+    //Test run results
+    public async Task<TestRunResultsResponse> GetAllTestRunResultsAsync(string code, int limit = 100, int offset = 0)
+    {
+      return await _api.GetAllTestRunResults(_api_token, code, limit, offset);
+    }
+
+    public async Task<SpecificTestRunResultResponse> GetSpecificTestRunResultAsync(string code, string hash)
+    {
+      return await _api.GetSpecificTestRunResult(_api_token, code, hash);
+    }
+
+    public async Task<TestRunResultResponse> AddTestRunResultAsync(string code, int run_id, AddTestRunResultRequest testRunResultRequest)
+    {
+      return await _api.AddTestRunResult(_api_token, code, run_id, testRunResultRequest);
+    }
+
+    public async Task<TestRunResultResponse> UpdateTestRunResultAsync(string code, int run_id, string hash, UpdateTestRunResultRequest updateTestRunResultRequest)
+    {
+      return await _api.UpdateTestRunResult(_api_token, code, run_id, hash, updateTestRunResultRequest);
+    }
+
+    public async Task<TestRunResultResponse> DeleteTestRunResultAsync(string code, int run_id, string hash)
+    {
+      return await _api.DeleteTestRunResult(_api_token, code, run_id, hash);
     }
   }
 }
