@@ -9,13 +9,25 @@ using System;
 namespace Qase.Test
 {
   [TestClass]
-  public class QaseAPITest
+  public class QaseAPIProjects
   {
     [TestMethod]
     public void GetAllProjects()
     {
       QaseAPI qaseAPI = new QaseAPI();
-      var projects = qaseAPI.GetAllProjectsAsync().Result;
+      try
+      {
+        var projects = qaseAPI.GetAllProjectsAsync().Result;
+      }
+      catch (WebApiException ex)
+      {
+      }
+      catch (ApiException ex)
+      {
+      }
+      catch (Exception ex)
+      {
+      }
     }
 
     [TestMethod]
@@ -37,43 +49,6 @@ namespace Qase.Test
          Access =  AccessLevel.All.ToString(),
          Group = null
       }).Result;
-    }
-
-    [TestMethod]
-    public void GetAllTestCases()
-    {
-      QaseAPI qaseAPI = new QaseAPI();
-      var testCases = qaseAPI.GetAllTestCasesAsync("CFT").Result;
-    }
-
-    [TestMethod]
-    public void GetSpecificTestCase()
-    {
-      QaseAPI qaseAPI = new QaseAPI();
-      try
-      {
-        var testCase = qaseAPI.GetSpecificTestCaseAsync("CFT", 1).Result;
-      }
-      catch (WebApiException ex)
-      {
-
-      }
-      catch (ApiException ex)
-      {
-      }
-      catch (Exception ex)
-      {
-      }
-    }
-
-
-    [TestMethod]
-    public void DeleteTestCase()
-    {
-      QaseAPI qaseAPI = new QaseAPI();
-
-      var testCase = qaseAPI.DeleteTestCaseAsync("CFT", 2).Result;
-
     }
   }
 }

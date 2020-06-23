@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace Qase.API.Qase.Model.TestCases
+namespace Qase.API.Qase.Model
 {
-  public partial class ResultTestCases
+  public partial class Result<T>
   {
     [JsonProperty("total")]
     public long Total { get; set; }
@@ -15,6 +17,6 @@ namespace Qase.API.Qase.Model.TestCases
     public long Count { get; set; }
 
     [JsonProperty("entities")]
-    public List<TestCases> TestCases { get; set; }
+    public List<T> Entities { get; set; }
   }
 }

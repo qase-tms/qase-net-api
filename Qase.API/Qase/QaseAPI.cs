@@ -1,9 +1,7 @@
 ﻿using Qase.API.Qase.Model;
 using Qase.API.Qase.Model.Projects;
 using Qase.API.Qase.Model.TestCases;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Qase.API.Qase.Model.TestRuns;
 using System.Threading.Tasks;
 
 namespace Qase.API.Qase
@@ -26,6 +24,8 @@ namespace Qase.API.Qase
       _api = QaseServiceWebApiFactory.CreateWebApi(_apiUrl);
     }
 
+    //Projects
+
     public async Task<ProjectsResponse> GetAllProjectsAsync(int limit = 100, int offset = 0)
     {
       return await _api.GetAllProjects(_api_token, limit, offset);
@@ -41,6 +41,8 @@ namespace Qase.API.Qase
       return await _api.CreateNewProject(_api_token, createProjectRequest);
     }
 
+    //Test cases
+
     public async Task<TestCasesResponse> GetAllTestCasesAsync(string code, int limit = 100, int offset = 0)
     {
       return await _api.GetAllTestCases(_api_token, code, limit, offset);
@@ -54,6 +56,27 @@ namespace Qase.API.Qase
     public async Task<BaseResponse> DeleteTestCaseAsync(string code, int id)
     {
       return await _api.DeleteTestCase(_api_token, code, id);
+    }
+
+    //Test runs
+    public async Task<TestRunsResponse> GetAllTestRunsAsync(string code, int limit = 100, int offset = 0)
+    {
+      return await _api.GetAllTestRuns(_api_token, code, limit, offset);
+    }
+
+    public async Task<SpecificTestRunResponse> GetSpecificTestRunAsync(string code, int id)
+    {
+      return await _api.GetSpecificTestRun(_api_token, code, id);
+    }
+
+    public async Task<TestRunResponse> CreateNewTestRunAsync(string code, CreateTestRunRequest createTestRunRequest)
+    {
+      return await _api.CreateNewTestRun(_api_token, code, createTestRunRequest);
+    }
+
+    public async Task<TestRunResponse> DeleteTestRunAsync(string code, int id)
+    {
+      return await _api.DeleteTestRun(_api_token, code, id);
     }
   }
 }

@@ -8,6 +8,6 @@ namespace Qase.API.Qase.Model.Projects
   public partial class CreateProjectResponse: BaseResponse
   {
     [JsonProperty("result")]
-    public ResultCreate Result { get; set; }
+    public ResultCreateProject Result { get; set; }
   }
 }
