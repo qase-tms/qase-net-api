@@ -1,4 +1,5 @@
-﻿using Qase.API.Qase.Model.Projects;
+﻿using Qase.API.Qase.Model;
+using Qase.API.Qase.Model.Projects;
 using Qase.API.Qase.Model.TestCases;
 using System;
 using System.Collections.Generic;
@@ -48,6 +49,11 @@ namespace Qase.API.Qase
     public async Task<SpecificTestCaseResponse> GetSpecificTestCaseAsync(string code, int id)
     {
       return await _api.GetSpecificTestCase(_api_token, code, id);
+    }
+
+    public async Task<BaseResponse> DeleteTestCaseAsync(string code, int id)
+    {
+      return await _api.DeleteTestCase(_api_token, code, id);
     }
   }
 }

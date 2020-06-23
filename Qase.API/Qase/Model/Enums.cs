@@ -30,7 +30,7 @@ namespace Qase.API.Qase.Model
     Low
   }
 
-  public enum Type
+  public enum TypeCase
   {
     Other,
     Functional,

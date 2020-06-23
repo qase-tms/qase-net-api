@@ -22,7 +22,7 @@ namespace Qase.Test
     public void GetSpecificProject()
     {
       QaseAPI qaseAPI = new QaseAPI();
-      var project = qaseAPI.GetSpecificProjectAsync("DEMOTR").Result;
+      var project = qaseAPI.GetSpecificProjectAsync("CFT").Result;
     }
 
     [TestMethod]
@@ -43,7 +43,7 @@ namespace Qase.Test
     public void GetAllTestCases()
     {
       QaseAPI qaseAPI = new QaseAPI();
-      var testCases = qaseAPI.GetAllTestCasesAsync("DEMOTR").Result;
+      var testCases = qaseAPI.GetAllTestCasesAsync("CFT").Result;
     }
 
     [TestMethod]
@@ -52,7 +52,7 @@ namespace Qase.Test
       QaseAPI qaseAPI = new QaseAPI();
       try
       {
-        var testCase = qaseAPI.GetSpecificTestCaseAsync("DEMOTR", 1).Result;
+        var testCase = qaseAPI.GetSpecificTestCaseAsync("CFT", 1).Result;
       }
       catch (WebApiException ex)
       {
@@ -64,6 +64,16 @@ namespace Qase.Test
       catch (Exception ex)
       {
       }
+    }
+
+
+    [TestMethod]
+    public void DeleteTestCase()
+    {
+      QaseAPI qaseAPI = new QaseAPI();
+
+      var testCase = qaseAPI.DeleteTestCaseAsync("CFT", 2).Result;
+
     }
   }
 }

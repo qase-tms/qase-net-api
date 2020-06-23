@@ -1,4 +1,5 @@
-﻿using Qase.API.Qase.Model.Projects;
+﻿using Qase.API.Qase.Model;
+using Qase.API.Qase.Model.Projects;
 using Qase.API.Qase.Model.TestCases;
 using Refit;
 using System.Threading.Tasks;
@@ -50,5 +51,15 @@ namespace Qase.API.Qase
     /// <returns></returns>
     [Get("/case/{code}/{id}")]
     Task<SpecificTestCaseResponse> GetSpecificTestCase([Header("Token")] string api_token, string code, int id);
+
+    /// <summary>
+    /// Delete test case
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Delete("/case/{code}/{id}")]
+    Task<BaseResponse> DeleteTestCase([Header("Token")] string api_token, string code, int id);
   }
 }

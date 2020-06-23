@@ -31,7 +31,7 @@ namespace Qase.API.Qase.Model.TestCases
     public Priority Priority { get; set; }
 
     [JsonProperty("type")]
-    public Type Type { get; set; }
+    public TypeCase Type { get; set; }
 
     [JsonProperty("behavior")]
     public Behavior Behavior { get; set; }
