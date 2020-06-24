@@ -20,7 +20,10 @@ namespace Qase.Test
       QaseAPI qaseAPI = new QaseAPI();
       try
       {
-        var testRunResults = qaseAPI.GetAllTestRunResultsAsync("TEST").Result;
+        BaseFilter filterTestRunResult = new BaseFilter();
+        filterTestRunResult.DictionaryFilters.Add($"filters[{TypeFilter.status}]", StatusTestRunResult.passed.ToString());
+
+        var testRunResults = qaseAPI.GetAllTestRunResultsAsync("TEST", filterTestRunResult).Result;
       }
       catch (WebApiException ex)
       {

@@ -32,14 +32,14 @@ namespace Qase.API.Qase.Model
 
   public enum TypeCase
   {
-    Other,
-    Functional,
-    Smoke,
-    Regression,
-    Security,
-    Usability,
-    Performance,
-    Acceptance
+    other,
+    functional,
+    smoke,
+    regression,
+    security,
+    usability,
+    performance,
+    acceptance
   }
 
   public enum Behavior
@@ -50,10 +50,50 @@ namespace Qase.API.Qase.Model
     Destructive
   }
 
-  public enum Automation
+  //public enum Automation
+  //{
+  //  is_not_automated,
+  //  automated,
+  //  to_be_automated,
+  //}
+
+  public enum TestCaseStatus
   {
-    is_not_automated,
-    automated,
-    to_be_automated,
+    Actual,
+    Draft,
+    Deprecated,
+  }
+
+  public enum TypeFilter
+  {
+    search,
+    milestone_id,
+    suite_id,
+    severity,
+    priority,
+    type,
+    behavior,
+    automation,
+    status,
+    member,
+    run,
+    case_id,
+    from_end_time,
+    to_end_time
+  }
+
+  public enum StatusTestRun
+  {
+    active, 
+    complete, 
+    abort
+  }
+
+  public enum StatusTestRunResult
+  {
+    in_progress, 
+    passed, 
+    failed, 
+    blocked
   }
 }

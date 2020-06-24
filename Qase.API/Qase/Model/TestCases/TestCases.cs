@@ -40,7 +40,7 @@ namespace Qase.API.Qase.Model.TestCases
     public object Automation { get; set; }
 
     [JsonProperty("status")]
-    public object Status { get; set; }
+    public TestCaseStatus Status { get; set; }
 
     [JsonProperty("milestone_id")]
     public int? MilestoneId { get; set; }

@@ -8,6 +8,6 @@ namespace Qase.API.Qase.Model.TestRunResults
   public partial class TestRunResultsResponse : BaseResponse
   {
     [JsonProperty("result")]
-    public Result<TestRunResult> Result { get; set; }
+    public BaseResult<TestRunResult> Result { get; set; }
   }
 }

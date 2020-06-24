@@ -3,6 +3,7 @@ using Qase.API.Qase.Model.Projects;
 using Qase.API.Qase.Model.TestCases;
 using Qase.API.Qase.Model.TestRunResults;
 using Qase.API.Qase.Model.TestRuns;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Qase.API.Qase
@@ -42,9 +43,9 @@ namespace Qase.API.Qase
     }
 
     //Test cases
-    public async Task<TestCasesResponse> GetAllTestCasesAsync(string code, int limit = 100, int offset = 0)
+    public async Task<TestCasesResponse> GetAllTestCasesAsync(string code, BaseFilter filterCases)
     {
-      return await _api.GetAllTestCases(_api_token, code, limit, offset);
+      return await _api.GetAllTestCases(_api_token, code, filterCases.limit, filterCases.offset, filterCases.DictionaryFilters);
     }
 
     public async Task<SpecificTestCaseResponse> GetSpecificTestCaseAsync(string code, int id)
@@ -58,9 +59,9 @@ namespace Qase.API.Qase
     }
 
     //Test runs
-    public async Task<TestRunsResponse> GetAllTestRunsAsync(string code, int limit = 100, int offset = 0)
+    public async Task<TestRunsResponse> GetAllTestRunsAsync(string code, BaseFilter filterTestRun)
     {
-      return await _api.GetAllTestRuns(_api_token, code, limit, offset);
+      return await _api.GetAllTestRuns(_api_token, code, filterTestRun.limit, filterTestRun.offset, filterTestRun.DictionaryFilters);
     }
 
     public async Task<SpecificTestRunResponse> GetSpecificTestRunAsync(string code, int id)
@@ -79,9 +80,9 @@ namespace Qase.API.Qase
     }
 
     //Test run results
-    public async Task<TestRunResultsResponse> GetAllTestRunResultsAsync(string code, int limit = 100, int offset = 0)
+    public async Task<TestRunResultsResponse> GetAllTestRunResultsAsync(string code, BaseFilter filterTestRunResult)
     {
-      return await _api.GetAllTestRunResults(_api_token, code, limit, offset);
+      return await _api.GetAllTestRunResults(_api_token, code, filterTestRunResult.limit, filterTestRunResult.offset, filterTestRunResult.DictionaryFilters);
     }
 
     public async Task<SpecificTestRunResultResponse> GetSpecificTestRunResultAsync(string code, string hash)

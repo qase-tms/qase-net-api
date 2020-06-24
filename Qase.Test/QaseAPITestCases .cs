@@ -2,9 +2,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Qase.API;
 using Qase.API.Qase;
 using Qase.API.Qase.Model;
-using Qase.API.Qase.Model.Projects;
+using Qase.API.Qase.Model.TestCases;
 using Refit;
 using System;
+using System.Collections.Generic;
 
 namespace Qase.Test
 {
@@ -18,7 +19,10 @@ namespace Qase.Test
       QaseAPI qaseAPI = new QaseAPI();
       try
       {
-        var testCases = qaseAPI.GetAllTestCasesAsync("TEST").Result;
+        BaseFilter filterCases = new BaseFilter();
+        filterCases.DictionaryFilters.Add($"filters[{TypeFilter.type}]", new List<string>() { TypeCase.other.ToString(), TypeCase.performance.ToString() });
+
+        var testCases = qaseAPI.GetAllTestCasesAsync("TEST", filterCases).Result;
       }
       catch (WebApiException ex)
       {

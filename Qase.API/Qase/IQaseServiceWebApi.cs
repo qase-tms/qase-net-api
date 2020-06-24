@@ -4,6 +4,7 @@ using Qase.API.Qase.Model.TestCases;
 using Qase.API.Qase.Model.TestRunResults;
 using Qase.API.Qase.Model.TestRuns;
 using Refit;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Qase.API.Qase
@@ -45,8 +46,8 @@ namespace Qase.API.Qase
     /// <param name="limit"></param>
     /// <param name="offset"></param>
     /// <returns></returns>
-    [Get("/case/{code}?limit={limit}&offset={offset}")]
-    Task<TestCasesResponse> GetAllTestCases([Header("Token")] string api_token, string code, int limit, int offset);
+    [Get("/case/{code}")]
+    Task<TestCasesResponse> GetAllTestCases([Header("Token")] string api_token, string code, int limit, int offset, Dictionary<string,object> dictionaryFilter);
 
     /// <summary>
     /// Get a specific test case
@@ -76,8 +77,8 @@ namespace Qase.API.Qase
     /// <param name="limit"></param>
     /// <param name="offset"></param>
     /// <returns></returns>
-    [Get("/run/{code}?limit={limit}&offset={offset}")]
-    Task<TestRunsResponse> GetAllTestRuns([Header("Token")] string api_token, string code, int limit, int offset);
+    [Get("/run/{code}")]
+    Task<TestRunsResponse> GetAllTestRuns([Header("Token")] string api_token, string code, int limit, int offset, Dictionary<string, object> dictionaryFilter);
 
     /// <summary>
     /// Get a specific test run
@@ -117,8 +118,8 @@ namespace Qase.API.Qase
     /// <param name="limit"></param>
     /// <param name="offset"></param>
     /// <returns></returns>
-    [Get("/result/{code}?limit={limit}&offset={offset}")]
-    Task<TestRunResultsResponse> GetAllTestRunResults([Header("Token")] string api_token, string code, int limit, int offset);
+    [Get("/result/{code}")]
+    Task<TestRunResultsResponse> GetAllTestRunResults([Header("Token")] string api_token, string code, int limit, int offset, Dictionary<string, object> dictionaryFilter);
 
     /// <summary>
     /// Get a specific test run result

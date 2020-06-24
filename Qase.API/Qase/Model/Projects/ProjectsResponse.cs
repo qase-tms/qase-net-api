@@ -5,6 +5,6 @@ namespace Qase.API.Qase.Model.Projects
   public partial class ProjectsResponse: BaseResponse
   {
     [JsonProperty("result")]
-    public Result<Project> Result { get; set; }
+    public BaseResult<Project> Result { get; set; }
   }
 }

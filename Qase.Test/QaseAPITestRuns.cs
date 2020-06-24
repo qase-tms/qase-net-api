@@ -19,7 +19,10 @@ namespace Qase.Test
       QaseAPI qaseAPI = new QaseAPI();
       try
       {
-        var testRuns = qaseAPI.GetAllTestRunsAsync("CFT").Result;
+        BaseFilter filterTestRun = new BaseFilter();
+        filterTestRun.DictionaryFilters.Add($"filters[{TypeFilter.status}]", StatusTestRun.active.ToString());
+
+        var testRuns = qaseAPI.GetAllTestRunsAsync("TEST", filterTestRun).Result;
       }
       catch (WebApiException ex)
       {
@@ -36,7 +39,7 @@ namespace Qase.Test
     public void GetSpecificTestRun()
     {
       QaseAPI qaseAPI = new QaseAPI();
-      var testRun = qaseAPI.GetSpecificTestRunAsync("CFT", 1).Result;
+      var testRun = qaseAPI.GetSpecificTestRunAsync("TEST", 1).Result;
     }
 
     [TestMethod]

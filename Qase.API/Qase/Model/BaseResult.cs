@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Qase.API.Qase.Model
 {
-  public partial class Result<T>
+  public partial class BaseResult<T>
   {
     [JsonProperty("total")]
     public long Total { get; set; }
