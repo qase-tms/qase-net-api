@@ -10,9 +10,9 @@ namespace Qase.API.Qase
 {
   public class QaseAPI
   {
-    readonly string _apiUrl = "https://api.qase.io/v1";
+    readonly string _apiUrl;
     readonly IQaseServiceWebApi _api;
-    readonly string _api_token = "757aa920165d8f4fff32f179bc4abe0d93268200";
+    readonly string _api_token;
 
     public QaseAPI()
     {
