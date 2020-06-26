@@ -1,4 +1,5 @@
 ﻿using Qase.API.Qase.Model;
+using Qase.API.Qase.Model.CustomFields;
 using Qase.API.Qase.Model.Defects;
 using Qase.API.Qase.Model.Milestones;
 using Qase.API.Qase.Model.Projects;
@@ -223,7 +224,7 @@ namespace Qase.API.Qase
     #endregion
 
     #region Defects
-    public async Task<DefectsResponse> GetAllTDefectsAsync(string code, BaseFilter filterTestRunResult)
+    public async Task<DefectsResponse> GetAllDefectsAsync(string code, BaseFilter filterTestRunResult)
     {
       return await _api.GetAllDefects(_api_token, code, filterTestRunResult.limit, filterTestRunResult.offset, filterTestRunResult.DictionaryFilters);
     }
@@ -241,6 +242,18 @@ namespace Qase.API.Qase
     public async Task<DefectResponse> DeleteDefectAsync(string code, int id)
     {
       return await _api.DeleteDefect(_api_token, code, id);
+    }
+    #endregion
+
+    #region Custom Fields
+    public async Task<CustomFieldsResponse> GetAllCustomFieldsAsync(string code, BaseFilter filterTestRunResult)
+    {
+      return await _api.GetAllCustomFields(_api_token, code, filterTestRunResult.limit, filterTestRunResult.offset);
+    }
+
+    public async Task<SpecificCustomFieldResponse> GetSpecificCustomFieldAsync(string code, int id)
+    {
+      return await _api.GetSpecificCustomField(_api_token, code, id);
     }
     #endregion
   }

@@ -1,4 +1,5 @@
 ﻿using Qase.API.Qase.Model;
+using Qase.API.Qase.Model.CustomFields;
 using Qase.API.Qase.Model.Defects;
 using Qase.API.Qase.Model.Milestones;
 using Qase.API.Qase.Model.Projects;
@@ -398,21 +399,70 @@ namespace Qase.API.Qase
     #endregion
 
     #region Defects
-
+    /// <summary>
+    /// Get all defects
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="limit"></param>
+    /// <param name="offset"></param>
+    /// <param name="dictionaryFilter"></param>
+    /// <returns></returns>
     [Get("/defect/{code}")]
     Task<DefectsResponse> GetAllDefects([Header("Token")] string api_token, string code, int limit, int offset, Dictionary<string, object> dictionaryFilter);
 
-
+    /// <summary>
+    /// Get a specific defect
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [Get("/defect/{code}/{id}")]
     Task<SpecificDefectResponse> GetSpecificDefect([Header("Token")] string api_token, string code, int id);
 
-
+    /// <summary>
+    /// Resolve
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [Patch("/defect/{code}/resolve/{id}")]
     Task<DefectResponse> ResolveDefect([Header("Token")] string api_token, string code, int id);
 
-
+    /// <summary>
+    /// Delete defect
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [Delete("/defect/{code}/{id}")]
     Task<DefectResponse> DeleteDefect([Header("Token")] string api_token, string code, int id);
+    #endregion
+
+    #region Custom Fields
+    /// <summary>
+    /// Get all custom fields
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="limit"></param>
+    /// <param name="offset"></param>
+    /// <returns></returns>
+    [Get("/custom_field/{code}")]
+    Task<CustomFieldsResponse> GetAllCustomFields([Header("Token")] string api_token, string code, int limit, int offset);
+
+    /// <summary>
+    /// Get a specific custom field
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Get("/custom_field/{code}/{id}")]
+    Task<SpecificCustomFieldResponse> GetSpecificCustomField([Header("Token")] string api_token, string code, int id);
     #endregion
   }
 }
