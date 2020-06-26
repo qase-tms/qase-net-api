@@ -236,7 +236,7 @@ var id = resp.Result.Id;
 This method is used to update a test suite through API. You should provide an object with a list of fields you want to update in a payload. At least one field is required. Fields in payload will overwrite existing values.
 
 ```C#
-using Qase.API.Qase.Model.TestRunResults;
+using Qase.API.Qase.Model.Suites;
 
 var resp = await qaseAPI.CreateTestSuiteAsync("TEST", 1, new SuiteRequest
 {
@@ -252,4 +252,57 @@ This method completely deletes a test suite from repository.
 
 ```C#
 var resp = await qaseAPI.DeleteTestSuiteAsync("TEST", 1);
+```
+
+### Milestones ###
+
+#### Get all milestones ####
+This method allows to retrieve all milestones stored in selected project. You can you limit and offset params to paginate.
+
+```C#
+BaseFilter filter = new BaseFilter();
+filter.DictionaryFilters.Add($"filters[{TypeFilter.search}]", "text search");
+
+var milestones = await qaseAPI.GetAllMilestonesAsync("TEST", filter);
+```
+
+#### Get a specific milestone ####
+This method allows to retrieve a specific milestone.
+
+```C#
+ var milestone = await qaseAPI.GetSpecificMilestoneAsync("TEST", 1);
+```
+
+#### Create a new milestone ####
+This method is used to create a new milestone through API.
+
+```C#
+using Qase.API.Qase.Model.Milestones;
+
+var resp = await qaseAPI.CreateMilestoneAsync("TEST", new MilestoneRequest
+{ 
+   Title = "New milestone"
+});
+var id = resp.Result.Id;
+```
+
+#### Update milestone ####
+This method is used to update a milestone through API. You should provide an object with a list of fields you want to update in a payload. At least one field is required. Fields in payload will overwrite existing values.
+
+```C#
+using Qase.API.Qase.Model.Milestones;
+
+var resp = await qaseAPI.UpdateMilestoneAsync("TEST", 1, new MilestoneRequest
+{
+    Title = "Test milestone",
+    Description = "Milestone description",
+});
+var id = resp.Result.Id;
+```
+
+#### Delete milestone ####
+This method completely deletes a milestone from repository.
+
+```C#
+ var resp = await qaseAPI.DeleteMilestoneAsync("TEST", 1);
 ```
