@@ -54,7 +54,7 @@ This method allows to retrieve all test cases stored in selected project. You ca
 BaseFilter filter = new BaseFilter();
 filter.DictionaryFilters.Add($"filters[{TypeFilter.type}]", new List<string>() { TypeCase.other.ToString(), TypeCase.performance.ToString() });
 
-var testCases = await qaseAPI.GetAllTestCasesAsync("TEST", filterCases);
+var testCases = await qaseAPI.GetAllTestCasesAsync("TEST", filter);
 ```
 
 #### Get a specific test case ####
@@ -81,7 +81,7 @@ This method allows to retrieve all test runs stored in selected project. You can
 BaseFilter filter = new BaseFilter();
 filter.DictionaryFilters.Add($"filters[{TypeFilter.status}]", StatusTestRun.active.ToString());
 
-var testRuns = await qaseAPI.GetAllTestRunsAsync("TEST", filterTestRun);
+var testRuns = await qaseAPI.GetAllTestRunsAsync("TEST", filter);
 ```
 
 #### Get a specific test run ####
@@ -127,7 +127,7 @@ This method allows to retrieve all test run results stored in selected project. 
 BaseFilter filter = new BaseFilter();
 filter.DictionaryFilters.Add($"filters[{TypeFilter.status}]", StatusTestRunResult.passed.ToString());
 
-var testRunResults = await qaseAPI.GetAllTestRunResultsAsync("TEST", filterTestRunResult);
+var testRunResults = await qaseAPI.GetAllTestRunResultsAsync("TEST", filter);
 ```
 
 #### Get a specific test run result ####
@@ -196,4 +196,60 @@ This method completely deletes a test run result from repository.
 
 ```C#
 var resp = await qaseAPI.DeleteTestRunResultAsync("TEST", 4, "2898ba7f3b4d857cec8bee4a852cdc85f8b33132");
+```
+
+### Suites ###
+
+#### Get all test suites ####
+This method allows to retrieve all test suites stored in selected project. You can you limit and offset params to paginate.
+
+```C#
+BaseFilter filter = new BaseFilter();
+filter.DictionaryFilters.Add($"filters[{TypeFilter.search}]", "text search");
+
+var suites = await qaseAPI.GetAllTestSuitesAsync("TEST", filter);
+```
+
+#### Get a specific test suite ####
+This method allows to retrieve a specific test suite.
+
+```C#
+var suite = await qaseAPI.GetSpecificTestSuiteAsync("TEST", 1);
+```
+
+#### Create a new test suite ####
+This method is used to create a new test suite through API.
+
+```C#
+using Qase.API.Qase.Model.Suites;
+
+var resp = await qaseAPI.CreateTestSuiteAsync("TEST", new SuiteRequest
+{
+   Title = "Test suite",
+   Description = "Suite description",
+   Preconditions = "Suite preconditions"
+});
+var id = resp.Result.Id;
+```
+
+#### Update test suite ####
+This method is used to update a test suite through API. You should provide an object with a list of fields you want to update in a payload. At least one field is required. Fields in payload will overwrite existing values.
+
+```C#
+using Qase.API.Qase.Model.TestRunResults;
+
+var resp = await qaseAPI.CreateTestSuiteAsync("TEST", 1, new SuiteRequest
+{
+    Title = "Test suite title",
+    Description = "Suite description",
+    Preconditions = "Suite preconditions"
+});
+var id = resp.Result.Id;
+```
+
+#### Delete test suite ####
+This method completely deletes a test suite from repository.
+
+```C#
+var resp = await qaseAPI.DeleteTestSuiteAsync("TEST", 1);
 ```
