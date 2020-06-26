@@ -358,3 +358,57 @@ This method completely deletes a shared step from repository. Also it will be re
  var resp = await qaseAPI.DeleteSharedStepAsync("TEST", "7d03f27a6a841fa50019a16d47a86d855da50da7");
  var hash = resp.Result.Hash;
 ```
+
+### Test plans ###
+
+#### Get all test plans ####
+This method allows to retrieve all test plans stored in selected project. You can you limit and offset params to paginate.
+
+```C#
+BaseFilter filter = new BaseFilter();
+
+var testPlans = await qaseAPI.GetAllTestPlansAsync("TEST", filter);
+```
+
+#### Get a specific test plan ####
+This method allows to retrieve a specific test plan with detailed information about test cases in that plan and assignee.
+
+```C#
+  var testPlan = await qaseAPI.GetSpecificTestPlanAsync("TEST", 1);
+```
+
+#### Create a new plan ####
+This method is used to create a new test plan through API. In response you will receive an ID of newly created plan.
+
+```C#
+using Qase.API.Qase.Model.TestPlans;
+
+var resp = await qaseAPI.CreateTestPlanAsync("TEST", new TestPlanRequest
+{
+    Title = "New Test Plan",
+    Cases = new List<int>() { 1 }
+});
+var id = resp.Result.Id;
+```
+
+#### Update test plan ####
+This method is used to update a test plan through API. You should provide an object with a list of fields you want to update in a payload. At least one field is required. Fields in payload will overwrite existing values.
+
+```C#
+using Qase.API.Qase.Model.TestPlans;
+
+var resp = await qaseAPI.UpdateTestPlanAsync("TEST", 1, new TestPlanRequest
+{
+    Title = "Test testPlan",
+    Description = "TestPlan description",
+});
+var id = resp.Result.Id;
+```
+
+#### Delete test plan ####
+This method completely deletes a test plan from repository.
+
+```C#
+var resp = qaseAPI.DeleteTestPlanAsync("TEST", 1);
+var id = resp.Result.Id;
+```
