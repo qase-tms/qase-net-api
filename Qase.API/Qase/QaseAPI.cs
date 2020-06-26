@@ -163,5 +163,32 @@ namespace Qase.API.Qase
       return await _api.DeleteMilestone(_api_token, code, id);
     }
     #endregion
+
+    #region Shared steps
+    public async Task<SharedStepsResponse> GetAllSharedStepsAsync(string code, BaseFilter filterTestRunResult)
+    {
+      return await _api.GetAllSharedSteps(_api_token, code, filterTestRunResult.limit, filterTestRunResult.offset, filterTestRunResult.DictionaryFilters);
+    }
+
+    public async Task<SpecificSharedStepResponse> GetSpecificSharedStepAsync(string code, string hash)
+    {
+      return await _api.GetSpecificSharedStep(_api_token, code, hash);
+    }
+
+    public async Task<SharedStepResponse> CreateSharedStepAsync(string code, SharedStepRequest sharedStepRequest)
+    {
+      return await _api.CreateNewSharedStep(_api_token, code, sharedStepRequest);
+    }
+
+    public async Task<SharedStepResponse> UpdateSharedStepAsync(string code, string hash, SharedStepRequest sharedStepRequest)
+    {
+      return await _api.UpdateSharedStep(_api_token, code, hash, sharedStepRequest);
+    }
+
+    public async Task<SharedStepResponse> DeleteSharedStepAsync(string code, string hash)
+    {
+      return await _api.DeleteSharedStep(_api_token, code, hash);
+    }
+    #endregion
   }
 }
