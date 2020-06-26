@@ -17,7 +17,10 @@ namespace Qase.Test
       QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
       try
       {
-        var projects = qaseAPI.GetAllProjectsAsync().Result;
+        BaseFilter filter = new BaseFilter();
+        filter.limit = 100;
+        filter.offset = 0;
+        var projects = qaseAPI.GetAllProjectsAsync(filter).Result;
       }
       catch (WebApiException ex)
       {

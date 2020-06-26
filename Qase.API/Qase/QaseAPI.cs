@@ -35,9 +35,9 @@ namespace Qase.API.Qase
     }
 
     #region Projects
-    public async Task<ProjectsResponse> GetAllProjectsAsync(int limit = 100, int offset = 0)
+    public async Task<ProjectsResponse> GetAllProjectsAsync(BaseFilter baseFilter)
     {
-      return await _api.GetAllProjects(_api_token, limit, offset);
+      return await _api.GetAllProjects(_api_token, baseFilter.limit, baseFilter.offset);
     }
 
     public async Task<SpecificProjectResponse> GetSpecificProjectAsync(string code)
