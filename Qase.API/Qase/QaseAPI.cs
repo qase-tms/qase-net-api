@@ -1,5 +1,6 @@
 ﻿using Qase.API.Qase.Model;
 using Qase.API.Qase.Model.Projects;
+using Qase.API.Qase.Model.Suites;
 using Qase.API.Qase.Model.TestCases;
 using Qase.API.Qase.Model.TestRunResults;
 using Qase.API.Qase.Model.TestRuns;
@@ -26,7 +27,7 @@ namespace Qase.API.Qase
       _api = QaseServiceWebApiFactory.CreateWebApi(_apiUrl);
     }
 
-    //Projects
+    #region Projects
     public async Task<ProjectsResponse> GetAllProjectsAsync(int limit = 100, int offset = 0)
     {
       return await _api.GetAllProjects(_api_token, limit, offset);
@@ -41,8 +42,9 @@ namespace Qase.API.Qase
     {
       return await _api.CreateNewProject(_api_token, createProjectRequest);
     }
+    #endregion
 
-    //Test cases
+    #region Test cases
     public async Task<TestCasesResponse> GetAllTestCasesAsync(string code, BaseFilter filterCases)
     {
       return await _api.GetAllTestCases(_api_token, code, filterCases.limit, filterCases.offset, filterCases.DictionaryFilters);
@@ -57,8 +59,9 @@ namespace Qase.API.Qase
     {
       return await _api.DeleteTestCase(_api_token, code, id);
     }
+    #endregion
 
-    //Test runs
+    #region Test runs
     public async Task<TestRunsResponse> GetAllTestRunsAsync(string code, BaseFilter filterTestRun)
     {
       return await _api.GetAllTestRuns(_api_token, code, filterTestRun.limit, filterTestRun.offset, filterTestRun.DictionaryFilters);
@@ -78,8 +81,9 @@ namespace Qase.API.Qase
     {
       return await _api.DeleteTestRun(_api_token, code, id);
     }
+    #endregion
 
-    //Test run results
+    #region Test run results
     public async Task<TestRunResultsResponse> GetAllTestRunResultsAsync(string code, BaseFilter filterTestRunResult)
     {
       return await _api.GetAllTestRunResults(_api_token, code, filterTestRunResult.limit, filterTestRunResult.offset, filterTestRunResult.DictionaryFilters);
@@ -104,5 +108,33 @@ namespace Qase.API.Qase
     {
       return await _api.DeleteTestRunResult(_api_token, code, run_id, hash);
     }
+    #endregion
+
+    #region Suites
+    public async Task<SuitesResponse> GetAllTestSuitesAsync(string code, BaseFilter filterTestRunResult)
+    {
+      return await _api.GetAllTestSuites(_api_token, code, filterTestRunResult.limit, filterTestRunResult.offset, filterTestRunResult.DictionaryFilters);
+    }
+
+    public async Task<SpecificSuiteResponse> GetSpecificTestSuiteAsync(string code, int id)
+    {
+      return await _api.GetSpecificTestSuite(_api_token, code, id);
+    }
+
+    public async Task<SuiteResponse> CreateTestSuiteAsync(string code, SuiteRequest suiteRequest)
+    {
+      return await _api.CreateNewTestSuite(_api_token, code, suiteRequest);
+    }
+
+    public async Task<SuiteResponse> UpdateTestSuiteAsync(string code, int id, SuiteRequest suiteRequest)
+    {
+      return await _api.UpdateTestSuite(_api_token, code, id, suiteRequest);
+    }
+
+    public async Task<BaseResponse> DeleteTestSuiteAsync(string code, int id)
+    {
+      return await _api.DeleteTestSuite(_api_token, code, id);
+    }
+    #endregion
   }
 }

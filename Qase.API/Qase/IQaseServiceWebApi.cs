@@ -1,5 +1,6 @@
 ﻿using Qase.API.Qase.Model;
 using Qase.API.Qase.Model.Projects;
+using Qase.API.Qase.Model.Suites;
 using Qase.API.Qase.Model.TestCases;
 using Qase.API.Qase.Model.TestRunResults;
 using Qase.API.Qase.Model.TestRuns;
@@ -11,6 +12,7 @@ namespace Qase.API.Qase
 {
   public interface IQaseServiceWebApi
   {
+    #region Projects
     /// <summary>
     /// Get All Projects
     /// </summary>
@@ -37,7 +39,9 @@ namespace Qase.API.Qase
     /// <returns></returns>
     [Post("/project")]
     Task<CreateProjectResponse> CreateNewProject([Header("Token")] string api_token, CreateProjectRequest createProjectRequest);
+    #endregion
 
+    #region Test cases
     /// <summary>
     /// Get all test cases
     /// </summary>
@@ -68,7 +72,9 @@ namespace Qase.API.Qase
     /// <returns></returns>
     [Delete("/case/{code}/{id}")]
     Task<BaseResponse> DeleteTestCase([Header("Token")] string api_token, string code, int id);
+    #endregion
 
+    #region Test runs
     /// <summary>
     /// Get all test runs
     /// </summary>
@@ -109,7 +115,9 @@ namespace Qase.API.Qase
     /// <returns></returns>
     [Delete("/run/{code}/{id}")]
     Task<TestRunResponse> DeleteTestRun([Header("Token")] string api_token, string code, int id);
+    #endregion
 
+    #region Test run results
     /// <summary>
     /// Get all test run results
     /// </summary>
@@ -163,6 +171,171 @@ namespace Qase.API.Qase
     /// <returns></returns>
     [Delete("/result/{code}/{run_id}/{hash}")]
     Task<TestRunResultResponse> DeleteTestRunResult([Header("Token")] string api_token, string code, int run_id, string hash);
+    #endregion
 
+    #region Suites
+    /// <summary>
+    /// Get all test suites
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="limit"></param>
+    /// <param name="offset"></param>
+    /// <param name="dictionaryFilter"></param>
+    /// <returns></returns>
+    [Get("/suite/{code}")]
+    Task<SuitesResponse> GetAllTestSuites([Header("Token")] string api_token, string code, int limit, int offset, Dictionary<string, object> dictionaryFilter);
+
+    /// <summary>
+    /// Get a specific test suite
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Get("/suite/{code}/{id}")]
+    Task<SpecificSuiteResponse> GetSpecificTestSuite([Header("Token")] string api_token, string code, int id);
+
+    /// <summary>
+    /// Create a new test suite
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name=""></param>
+    /// <returns></returns>
+    [Post("/suite/{code}")]
+    Task<SuiteResponse> CreateNewTestSuite([Header("Token")] string api_token, string code, SuiteRequest suiteRequest);
+
+    /// <summary>
+    /// Update test suite
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <param name=""></param>
+    /// <returns></returns>
+    [Patch("/suite/{code}/{id}")]
+    Task<SuiteResponse> UpdateTestSuite([Header("Token")] string api_token, string code, int id, SuiteRequest suiteRequest);
+
+    /// <summary>
+    /// Delete test suite
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Delete("/suite/{code}/{id}")]
+    Task<BaseResponse> DeleteTestSuite([Header("Token")] string api_token, string code, int id);
+    #endregion
+
+    #region Milestones
+    /// <summary>
+    /// Get all milestones
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="limit"></param>
+    /// <param name="offset"></param>
+    /// <param name="dictionaryFilter"></param>
+    /// <returns></returns>
+    [Get("/milestone/{code}")]
+    Task<MilestonesResponse> GetAllMilestones([Header("Token")] string api_token, string code, int limit, int offset, Dictionary<string, object> dictionaryFilter);
+
+    /// <summary>
+    /// Get a specific milestone
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Get("/milestone/{code}/{id}")]
+    Task<SpecificMilestoneResponse> GetSpecificMilestone([Header("Token")] string api_token, string code, int id);
+
+    /// <summary>
+    /// Create a new milestone
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name=""></param>
+    /// <returns></returns>
+    [Post("/milestone/{code}")]
+    Task<MilestoneResponse> CreateNewMilestone([Header("Token")] string api_token, string code, MilestoneRequest milestoneRequest);
+
+    /// <summary>
+    /// Update milestone
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <param name=""></param>
+    /// <returns></returns>
+    [Patch("/milestone/{code}/{id}")]
+    Task<MilestoneResponse> UpdateMilestone([Header("Token")] string api_token, string code, int id, MilestoneRequest milestoneRequest);
+
+    /// <summary>
+    /// Delete milestone
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Delete("/milestone/{code}/{id}")]
+    Task<MilestoneResponse> DeleteMilestone([Header("Token")] string api_token, string code, int id);
+    #endregion
+
+    #region Shared steps
+    /// <summary>
+    /// Get all shared steps
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="limit"></param>
+    /// <param name="offset"></param>
+    /// <param name="dictionaryFilter"></param>
+    /// <returns></returns>
+    [Get("/shared_step/{code}")]
+    Task<SharedStepsResponse> GetAllSharedSteps([Header("Token")] string api_token, string code, int limit, int offset, Dictionary<string, object> dictionaryFilter);
+
+    /// <summary>
+    /// Get a specific shared step
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="hash"></param>
+    /// <returns></returns>
+    [Get("/shared_step/{code}/{hash}")]
+    Task<SpecificSharedStepResponse> GetSpecificSharedStep([Header("Token")] string api_token, string code, string hash);
+
+    /// <summary>
+    /// Create a new shared step
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="sharedStepRequest"></param>
+    /// <returns></returns>
+    [Post("/shared_step/{code}")]
+    Task<SharedStepResponse> CreateNewSharedStep([Header("Token")] string api_token, string code, SharedStepRequest sharedStepRequest);
+
+    /// <summary>
+    /// Update shared step
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="hash"></param>
+    /// <param name="sharedStepRequest"></param>
+    /// <returns></returns>
+    [Patch("/shared_step/{code}/{hash}")]
+    Task<SharedStepResponse> UpdateSharedStep([Header("Token")] string api_token, string code, string hash, SharedStepRequest sharedStepRequest);
+
+    /// <summary>
+    /// Delete shared step
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="hash"></param>
+    /// <returns></returns>
+    [Delete("/shared_step/{code}/{hash}")]
+    Task<SharedStepResponse> DeleteSharedStep([Header("Token")] string api_token, string code, string hash);
+    #endregion
   }
 }
