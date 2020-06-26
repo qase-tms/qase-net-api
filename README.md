@@ -465,3 +465,21 @@ This method allows to retrieve one custom fields for specific project by id.
 ```C#
 var customField = await qaseAPI.GetSpecificCustomFieldAsync("TEST", 1);
 ```
+
+### Team ###
+
+#### Get all team members ####
+This method allows to retrieve all users in your team. You can you limit and offset params to paginate.
+
+```C#
+ BaseFilter filterTestRunResult = new BaseFilter();
+
+var teams = await qaseAPI.GetAllTeamsAsync("TEST", filterTestRunResult);
+```
+
+#### Get a specific team member ####
+This method allows to retrieve a specific team member by id.
+
+```C#
+var team = await qaseAPI.GetSpecificTeamAsync("TEST", 1);
+```
