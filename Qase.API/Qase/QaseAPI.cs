@@ -1,4 +1,5 @@
 ﻿using Qase.API.Qase.Model;
+using Qase.API.Qase.Model.Attachments;
 using Qase.API.Qase.Model.CustomFields;
 using Qase.API.Qase.Model.Defects;
 using Qase.API.Qase.Model.Milestones;
@@ -10,6 +11,7 @@ using Qase.API.Qase.Model.TestCases;
 using Qase.API.Qase.Model.TestPlans;
 using Qase.API.Qase.Model.TestRunResults;
 using Qase.API.Qase.Model.TestRuns;
+using Refit;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -267,6 +269,28 @@ namespace Qase.API.Qase
     public async Task<SpecificTeamResponse> GetSpecificTeamAsync(string code, int id)
     {
       return await _api.GetSpecificTeam(_api_token, code, id);
+    }
+    #endregion
+
+    #region Attachments
+    public async Task<AttachmentsResponse> GetAllAttachmentsAsync(string code, BaseFilter filterTestRunResult)
+    {
+      return await _api.GetAllAttachments(_api_token, code, filterTestRunResult.limit, filterTestRunResult.offset);
+    }
+
+    public async Task<SpecificAttachmentResponse> GetSpecificAttachmentAsync(string hash)
+    {
+      return await _api.GetSpecificAttachment(_api_token, hash);
+    }
+
+    public async Task<UploadAttachmentResponse> UploadAttachmentAsync(string hash, StreamPart file)
+    {
+      return await _api.UploadAttachment(_api_token, hash, file);
+    }
+
+    public async Task<AttachmentResponse> DeleteAttachmentAsync(string hash)
+    {
+      return await _api.DeleteAttachment(_api_token, hash);
     }
     #endregion
   }

@@ -1,4 +1,5 @@
 ﻿using Qase.API.Qase.Model;
+using Qase.API.Qase.Model.Attachments;
 using Qase.API.Qase.Model.CustomFields;
 using Qase.API.Qase.Model.Defects;
 using Qase.API.Qase.Model.Milestones;
@@ -487,6 +488,24 @@ namespace Qase.API.Qase
     /// <returns></returns>
     [Get("/user/{id}")]
     Task<SpecificTeamResponse> GetSpecificTeam([Header("Token")] string api_token, string code, int id);
+    #endregion
+
+    #region Shared steps
+
+    [Get("/attachment")]
+    Task<AttachmentsResponse> GetAllAttachments([Header("Token")] string api_token, string code, int limit, int offset);
+
+
+    [Get("/attachment/{hash}")]
+    Task<SpecificAttachmentResponse> GetSpecificAttachment([Header("Token")] string api_token, string hash);
+
+
+    [Post("attachment/{hash}")]
+    Task<UploadAttachmentResponse> UploadAttachment([Header("Token")] string api_token, string hash, [AliasAs("file")] StreamPart file);
+
+
+    [Delete("/attachment/{hash}")]
+    Task<AttachmentResponse> DeleteAttachment([Header("Token")] string api_token, string hash);
     #endregion
   }
 }
