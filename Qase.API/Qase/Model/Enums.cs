@@ -102,4 +102,10 @@ namespace Qase.API.Qase.Model
     open, 
     resolved
   }
+
+  public enum StatusMilestone
+  {
+    active,
+    completed
+  }
 }

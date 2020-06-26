@@ -20,7 +20,7 @@ namespace Qase.Test
         BaseFilter filterTestRunResult = new BaseFilter();
         filterTestRunResult.DictionaryFilters.Add($"filters[{TypeFilter.search}]", "");
 
-        var milestones = qaseAPI.GetAllMilestonesAsync("IC", filterTestRunResult).Result;
+        var milestones = qaseAPI.GetAllMilestonesAsync("TEST", filterTestRunResult).Result;
       }
       catch (WebApiException ex)
       {
@@ -37,7 +37,7 @@ namespace Qase.Test
     public void GetSpecificMilestone()
     {
       QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
-      var milestone = qaseAPI.GetSpecificMilestoneAsync("IC", 1).Result;
+      var milestone = qaseAPI.GetSpecificMilestoneAsync("TEST", 1).Result;
     }
 
     [TestMethod]
@@ -47,7 +47,7 @@ namespace Qase.Test
 
       var id = qaseAPI.CreateMilestoneAsync("TEST", new MilestoneRequest
       { 
-        Title = "new"
+        Title = "New milestone"
       }).Result
       .Result.Id;
     }
