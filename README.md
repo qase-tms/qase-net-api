@@ -195,5 +195,5 @@ var hash = resp.Result.Hash;
 This method completely deletes a test run result from repository.
 
 ```C#
-var resp = qaseAPI.DeleteTestRunResultAsync("TEST", 4, "2898ba7f3b4d857cec8bee4a852cdc85f8b33132")
+var resp = await qaseAPI.DeleteTestRunResultAsync("TEST", 4, "2898ba7f3b4d857cec8bee4a852cdc85f8b33132");
 ```
