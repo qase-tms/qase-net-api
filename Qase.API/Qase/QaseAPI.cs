@@ -283,9 +283,9 @@ namespace Qase.API.Qase
       return await _api.GetSpecificAttachment(_api_token, hash);
     }
 
-    public async Task<UploadAttachmentResponse> UploadAttachmentAsync(string hash, StreamPart file)
+    public async Task<UploadAttachmentResponse> UploadAttachmentAsync(string code, StreamPart file)
     {
-      return await _api.UploadAttachment(_api_token, hash, file);
+      return await _api.UploadAttachment(_api_token, code, file);
     }
 
     public async Task<AttachmentResponse> DeleteAttachmentAsync(string hash)

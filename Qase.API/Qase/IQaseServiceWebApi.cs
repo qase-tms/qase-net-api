@@ -500,8 +500,8 @@ namespace Qase.API.Qase
     Task<SpecificAttachmentResponse> GetSpecificAttachment([Header("Token")] string api_token, string hash);
 
 
-    [Post("attachment/{hash}")]
-    Task<UploadAttachmentResponse> UploadAttachment([Header("Token")] string api_token, string hash, [AliasAs("file")] StreamPart file);
+    [Post("attachment/{code}")]
+    Task<UploadAttachmentResponse> UploadAttachment([Header("Token")] string api_token, string code, [AliasAs("file")] StreamPart file);
 
 
     [Delete("/attachment/{hash}")]
