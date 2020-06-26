@@ -306,3 +306,55 @@ This method completely deletes a milestone from repository.
 ```C#
  var resp = await qaseAPI.DeleteMilestoneAsync("TEST", 1);
 ```
+
+### Shared steps ###
+
+#### Get all shared steps ####
+This method allows to retrieve all shared steps stored in selected project. You can you limit and offset params to paginate.
+
+```C#
+BaseFilter filter = new BaseFilter();
+
+var sharedSteps = await qaseAPI.GetAllSharedStepsAsync("TEST", filter);
+```
+
+#### Get a specific shared step ####
+This method allows to retrieve a specific shared step.
+
+```C#
+ var sharedStep = await qaseAPI.GetSpecificSharedStepAsync("TEST", "7d03f27a6a841fa50019a16d47a86d855da50da7");
+```
+
+#### Create a new shared step ####
+This method is used to create a new shared step through API.
+
+```C#
+using Qase.API.Qase.Model.SharedSteps;
+
+var resp = await qaseAPI.CreateSharedStepAsync("TEST", new SharedStepRequest
+{ 
+    Title = "Test SharedStep"
+});
+var hash = resp.Result.Hash;
+```
+
+#### Update shared step ####
+This method is used to update a shared step through API. You should provide an object with a list of fields you want to update in a payload. At least one field is required. Fields in payload will overwrite existing values.
+
+```C#
+using Qase.API.Qase.Model.SharedSteps;
+
+var resp = await qaseAPI.UpdateSharedStepAsync("TEST", "7d03f27a6a841fa50019a16d47a86d855da50da7", new SharedStepRequest
+{
+    Title = "Test SharedStep update"
+});
+var hash = resp.Result.Hash;
+```
+
+#### Delete shared step ####
+This method completely deletes a shared step from repository. Also it will be removed from all test cases.
+
+```C#
+ var resp = await qaseAPI.DeleteSharedStepAsync("TEST", "7d03f27a6a841fa50019a16d47a86d855da50da7");
+ var hash = resp.Result.Hash;
+```
