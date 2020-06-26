@@ -374,7 +374,7 @@ var testPlans = await qaseAPI.GetAllTestPlansAsync("TEST", filter);
 This method allows to retrieve a specific test plan with detailed information about test cases in that plan and assignee.
 
 ```C#
-  var testPlan = await qaseAPI.GetSpecificTestPlanAsync("TEST", 1);
+var testPlan = await qaseAPI.GetSpecificTestPlanAsync("TEST", 1);
 ```
 
 #### Create a new plan ####
@@ -482,4 +482,41 @@ This method allows to retrieve a specific team member by id.
 
 ```C#
 var team = await qaseAPI.GetSpecificTeamAsync("TEST", 1);
+```
+
+### Attachments ###
+
+#### Get all attachments ####
+This method allows to retrieve all attachments uploaded into your projects. You can you limit and offset params to paginate.
+
+```C#
+BaseFilter filter = new BaseFilter();
+
+var attachments = await qaseAPI.GetAllAttachmentsAsync("TEST", filter);
+```
+
+#### Get a specific attachment ####
+This method allows to retrieve a specific attachment by hash.
+
+```C#
+var attachment = await qaseAPI.GetSpecificAttachmentAsync("5b9d96e5a4dc75e71fe2378d65f9e9ea176ce479");
+```
+
+#### Upload attachmeent ####
+This method allows to upload attachment to Qase. Files to attach are sent as request body using 'multipart/form-data' content type. Max upload size: * Up to 32 Mb per file * Up to 128 Mb per single request * Up to 20 files per single request
+
+If there is no free space left in your team account, you will receive an error with code 507 - Insufficient Storage.
+
+```C#
+var path = @"TestFiles\Test.pdf";
+
+using var stream = new FileStream(path, FileMode.Open);
+var attachment = await qaseAPI.UploadAttachmentAsync("TEST", new StreamPart(stream, "test-streampart.pdf", "application/pdf"));
+```
+
+#### Delete attachment ####
+This method completely deletes an attachment.
+
+```C#
+var resp = await qaseAPI.DeleteAttachmentAsync("5b9d96e5a4dc75e71fe2378d65f9e9ea176ce479");
 ```

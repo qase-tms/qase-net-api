@@ -16,9 +16,9 @@ namespace Qase.Test
       QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
       try
       {
-        BaseFilter filterTestRunResult = new BaseFilter();
+        BaseFilter filter = new BaseFilter();
 
-        var customFields = qaseAPI.GetAllCustomFieldsAsync("TEST", filterTestRunResult).Result;
+        var customFields = qaseAPI.GetAllCustomFieldsAsync("TEST", filter).Result;
       }
       catch (WebApiException ex)
       {

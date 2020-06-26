@@ -16,9 +16,9 @@ namespace Qase.Test
       QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
       try
       {
-        BaseFilter filterTestRunResult = new BaseFilter();
+        BaseFilter filtert = new BaseFilter();
 
-        var teams = qaseAPI.GetAllTeamsAsync("TEST", filterTestRunResult).Result;
+        var teams = qaseAPI.GetAllTeamsAsync("TEST", filter).Result;
       }
       catch (WebApiException ex)
       {

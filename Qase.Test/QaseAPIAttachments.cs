@@ -17,9 +17,9 @@ namespace Qase.Test
       QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
       try
       {
-        BaseFilter filterTestRunResult = new BaseFilter();
+        BaseFilter filter = new BaseFilter();
 
-        var attachments = qaseAPI.GetAllAttachmentsAsync("TEST", filterTestRunResult).Result;
+        var attachments = qaseAPI.GetAllAttachmentsAsync("TEST", filter).Result;
       }
       catch (WebApiException ex)
       {
