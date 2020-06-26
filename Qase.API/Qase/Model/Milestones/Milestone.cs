@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Qase.API.Qase.Model.Suites
+namespace Qase.API.Qase.Model.Milestones
 {
   public partial class Milestone
   {

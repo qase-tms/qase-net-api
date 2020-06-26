@@ -3,7 +3,7 @@ using Qase.API.Qase.Model.TestPlans;
 using System;
 using System.Collections.Generic;
 
-namespace Qase.API.Qase.Model.Suites
+namespace Qase.API.Qase.Model.TestPlans
 {
   public partial class TestPlan
   {

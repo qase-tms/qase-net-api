@@ -1,7 +1,11 @@
 ﻿using Qase.API.Qase.Model;
+using Qase.API.Qase.Model.Defects;
+using Qase.API.Qase.Model.Milestones;
 using Qase.API.Qase.Model.Projects;
+using Qase.API.Qase.Model.SharedSteps;
 using Qase.API.Qase.Model.Suites;
 using Qase.API.Qase.Model.TestCases;
+using Qase.API.Qase.Model.TestPlans;
 using Qase.API.Qase.Model.TestRunResults;
 using Qase.API.Qase.Model.TestRuns;
 using Refit;
@@ -391,6 +395,24 @@ namespace Qase.API.Qase
     /// <returns></returns>
     [Delete("/suite/plan/{code}/{id}")]
     Task<TestPlanResponse> DeleteTestPlan([Header("Token")] string api_token, string code, int id);
+    #endregion
+
+    #region Defects
+
+    [Get("/defect/{code}")]
+    Task<DefectsResponse> GetAllDefects([Header("Token")] string api_token, string code, int limit, int offset, Dictionary<string, object> dictionaryFilter);
+
+
+    [Get("/defect/{code}/{id}")]
+    Task<SpecificDefectResponse> GetSpecificDefect([Header("Token")] string api_token, string code, int id);
+
+
+    [Patch("/defect/{code}/resolve/{id}")]
+    Task<DefectResponse> ResolveDefect([Header("Token")] string api_token, string code, int id);
+
+
+    [Delete("/defect/{code}/{id}")]
+    Task<DefectResponse> DeleteDefect([Header("Token")] string api_token, string code, int id);
     #endregion
   }
 }

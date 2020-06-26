@@ -1,7 +1,11 @@
 ﻿using Qase.API.Qase.Model;
+using Qase.API.Qase.Model.Defects;
+using Qase.API.Qase.Model.Milestones;
 using Qase.API.Qase.Model.Projects;
+using Qase.API.Qase.Model.SharedSteps;
 using Qase.API.Qase.Model.Suites;
 using Qase.API.Qase.Model.TestCases;
+using Qase.API.Qase.Model.TestPlans;
 using Qase.API.Qase.Model.TestRunResults;
 using Qase.API.Qase.Model.TestRuns;
 using System.Collections.Generic;
@@ -215,6 +219,28 @@ namespace Qase.API.Qase
     public async Task<TestPlanResponse> DeleteTestPlanAsync(string code, int id)
     {
       return await _api.DeleteTestPlan(_api_token, code, id);
+    }
+    #endregion
+
+    #region Defects
+    public async Task<DefectsResponse> GetAllTDefectsAsync(string code, BaseFilter filterTestRunResult)
+    {
+      return await _api.GetAllDefects(_api_token, code, filterTestRunResult.limit, filterTestRunResult.offset, filterTestRunResult.DictionaryFilters);
+    }
+
+    public async Task<SpecificDefectResponse> GetSpecificDefectAsync(string code, int id)
+    {
+      return await _api.GetSpecificDefect(_api_token, code, id);
+    }
+
+    public async Task<DefectResponse> ResolveDefectAsync(string code, int id)
+    {
+      return await _api.ResolveDefect(_api_token, code, id);
+    }
+
+    public async Task<DefectResponse> DeleteDefectAsync(string code, int id)
+    {
+      return await _api.DeleteDefect(_api_token, code, id);
     }
     #endregion
   }

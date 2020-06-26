@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Qase.API.Qase.Model.TestPlans
+namespace Qase.API.Qase.Model.Defects
 {
-  public partial class ResultTestPlan
+  public partial class ResultDefect
   {
     [JsonProperty("id")]
     public int Id { get; set; }

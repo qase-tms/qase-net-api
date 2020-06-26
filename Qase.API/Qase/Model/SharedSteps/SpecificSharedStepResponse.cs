@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Qase.API.Qase.Model.Suites
+namespace Qase.API.Qase.Model.SharedSteps
 {
   public partial class SpecificSharedStepResponse : BaseResponse
   {
