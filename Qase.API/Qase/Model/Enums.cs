@@ -96,4 +96,10 @@ namespace Qase.API.Qase.Model
     failed, 
     blocked
   }
+
+  public enum StatusDefect
+  {
+    open, 
+    resolved
+  }
 }

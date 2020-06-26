@@ -8,6 +8,6 @@ namespace Qase.API.Qase.Model.Milestones
   public partial class SpecificMilestoneResponse : BaseResponse
   {
     [JsonProperty("result")]
-    public List<Milestone> Result { get; set; }
+    public Milestone Result { get; set; }
   }
 }

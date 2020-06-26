@@ -6,6 +6,6 @@ namespace Qase.API.Qase.Model.SharedSteps
   public partial class SpecificSharedStepResponse : BaseResponse
   {
     [JsonProperty("result")]
-    public List<SharedStep> Result { get; set; }
+    public SharedStep Result { get; set; }
   }
 }

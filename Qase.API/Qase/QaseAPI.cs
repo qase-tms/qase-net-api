@@ -12,7 +12,6 @@ using Qase.API.Qase.Model.TestPlans;
 using Qase.API.Qase.Model.TestRunResults;
 using Qase.API.Qase.Model.TestRuns;
 using Refit;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Qase.API.Qase
@@ -139,7 +138,7 @@ namespace Qase.API.Qase
       return await _api.UpdateTestSuite(_api_token, code, id, suiteRequest);
     }
 
-    public async Task<BaseResponse> DeleteTestSuiteAsync(string code, int id)
+    public async Task<SuiteResponse> DeleteTestSuiteAsync(string code, int id)
     {
       return await _api.DeleteTestSuite(_api_token, code, id);
     }

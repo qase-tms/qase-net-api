@@ -232,7 +232,7 @@ namespace Qase.API.Qase
     /// <param name="id"></param>
     /// <returns></returns>
     [Delete("/suite/{code}/{id}")]
-    Task<BaseResponse> DeleteTestSuite([Header("Token")] string api_token, string code, int id);
+    Task<SuiteResponse> DeleteTestSuite([Header("Token")] string api_token, string code, int id);
     #endregion
 
     #region Milestones
@@ -365,7 +365,7 @@ namespace Qase.API.Qase
     /// <param name="code"></param>
     /// <param name="id"></param>
     /// <returns></returns>
-    [Get("/suite/plan/{code}/{id}")]
+    [Get("/plan/{code}/{id}")]
     Task<SpecificTestPlanResponse> GetSpecificTestPlan([Header("Token")] string api_token, string code, int id);
 
     /// <summary>
@@ -396,7 +396,7 @@ namespace Qase.API.Qase
     /// <param name="code"></param>
     /// <param name="id"></param>
     /// <returns></returns>
-    [Delete("/suite/plan/{code}/{id}")]
+    [Delete("/plan/{code}/{id}")]
     Task<TestPlanResponse> DeleteTestPlan([Header("Token")] string api_token, string code, int id);
     #endregion
 
@@ -499,9 +499,9 @@ namespace Qase.API.Qase
     [Get("/attachment/{hash}")]
     Task<SpecificAttachmentResponse> GetSpecificAttachment([Header("Token")] string api_token, string hash);
 
-
-    [Post("attachment/{code}")]
-    Task<UploadAttachmentResponse> UploadAttachment([Header("Token")] string api_token, string code, [AliasAs("file")] StreamPart file);
+    [Multipart]
+    [Post("/attachment/{code}")]
+    Task<UploadAttachmentResponse> UploadAttachment([Header("Token")] string api_token, string code, StreamPart file);
 
 
     [Delete("/attachment/{hash}")]

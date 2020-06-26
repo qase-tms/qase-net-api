@@ -8,6 +8,6 @@ namespace Qase.API.Qase.Model.Suites
   public partial class SpecificSuiteResponse : BaseResponse
   {
     [JsonProperty("result")]
-    public List<Suite> Result { get; set; }
+    public Suite Result { get; set; }
   }
 }

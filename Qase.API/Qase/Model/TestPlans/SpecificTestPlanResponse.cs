@@ -8,6 +8,6 @@ namespace Qase.API.Qase.Model.TestPlans
   public partial class SpecificTestPlanResponse : BaseResponse
   {
     [JsonProperty("result")]
-    public List<TestPlan> Result { get; set; }
+    public TestPlan Result { get; set; }
   }
 }
