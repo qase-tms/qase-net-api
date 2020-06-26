@@ -337,5 +337,60 @@ namespace Qase.API.Qase
     [Delete("/shared_step/{code}/{hash}")]
     Task<SharedStepResponse> DeleteSharedStep([Header("Token")] string api_token, string code, string hash);
     #endregion
+
+    #region Test plans
+    /// <summary>
+    /// Get all test plans
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="limit"></param>
+    /// <param name="offset"></param>
+    /// <param name="dictionaryFilter"></param>
+    /// <returns></returns>
+    [Get("/plan/{code}")]
+    Task<TestPlansResponse> GetAllTestPlans([Header("Token")] string api_token, string code, int limit, int offset, Dictionary<string, object> dictionaryFilter);
+
+    /// <summary>
+    /// Get a specific test plan
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Get("/suite/plan/{code}/{id}")]
+    Task<SpecificTestPlanResponse> GetSpecificTestPlan([Header("Token")] string api_token, string code, int id);
+
+    /// <summary>
+    /// Create a new plan
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="testPlanRequest"></param>
+    /// <returns></returns>
+    [Post("/plan/{code}")]
+    Task<TestPlanResponse> CreateNewTestPlan([Header("Token")] string api_token, string code, TestPlanRequest testPlanRequest);
+
+    /// <summary>
+    /// Update test plan
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <param name="testPlanRequest"></param>
+    /// <returns></returns>
+    [Patch("/plan/{code}/{id}")]
+    Task<TestPlanResponse> UpdateTestPlan([Header("Token")] string api_token, string code, int id, TestPlanRequest testPlanRequest);
+
+    /// <summary>
+    /// Delete test plan
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Delete("/suite/plan/{code}/{id}")]
+    Task<TestPlanResponse> DeleteTestPlan([Header("Token")] string api_token, string code, int id);
+    #endregion
   }
 }

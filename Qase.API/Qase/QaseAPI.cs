@@ -190,5 +190,32 @@ namespace Qase.API.Qase
       return await _api.DeleteSharedStep(_api_token, code, hash);
     }
     #endregion
+
+    #region Test plans
+    public async Task<TestPlansResponse> GetAllTestPlansAsync(string code, BaseFilter filterTestRunResult)
+    {
+      return await _api.GetAllTestPlans(_api_token, code, filterTestRunResult.limit, filterTestRunResult.offset, filterTestRunResult.DictionaryFilters);
+    }
+
+    public async Task<SpecificTestPlanResponse> GetSpecificTestPlanAsync(string code, int id)
+    {
+      return await _api.GetSpecificTestPlan(_api_token, code, id);
+    }
+
+    public async Task<TestPlanResponse> CreateTestPlanAsync(string code, TestPlanRequest testPlanRequest)
+    {
+      return await _api.CreateNewTestPlan(_api_token, code, testPlanRequest);
+    }
+
+    public async Task<TestPlanResponse> UpdateTestPlanAsync(string code, int id, TestPlanRequest testPlanRequest)
+    {
+      return await _api.UpdateTestPlan(_api_token, code, id, testPlanRequest);
+    }
+
+    public async Task<TestPlanResponse> DeleteTestPlanAsync(string code, int id)
+    {
+      return await _api.DeleteTestPlan(_api_token, code, id);
+    }
+    #endregion
   }
 }
