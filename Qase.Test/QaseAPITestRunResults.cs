@@ -105,7 +105,7 @@ namespace Qase.Test
     {
       QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
 
-      var resp = qaseAPI.DeleteTestRunResultAsync("TEST", 4, "").Result;
+      var resp = qaseAPI.DeleteTestRunResultAsync("TEST", 4, "2898ba7f3b4d857cec8bee4a852cdc85f8b33132").Result;
     }
   }
 }
