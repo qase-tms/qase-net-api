@@ -454,9 +454,9 @@ var id = resp.Result.Id;
 This method allows to retrieve all custom fields for a specific project. You can you limit and offset params to paginate.
 
 ```C#
-BaseFilter filterTestRunResult = new BaseFilter();
+BaseFilter filter = new BaseFilter();
 
-var customFields = await qaseAPI.GetAllCustomFieldsAsync("TEST", filterTestRunResult);
+var customFields = await qaseAPI.GetAllCustomFieldsAsync("TEST", filter);
 ```
 
 #### Get a specific custom field ####
@@ -472,9 +472,9 @@ var customField = await qaseAPI.GetSpecificCustomFieldAsync("TEST", 1);
 This method allows to retrieve all users in your team. You can you limit and offset params to paginate.
 
 ```C#
- BaseFilter filterTestRunResult = new BaseFilter();
+ BaseFilter filter = new BaseFilter();
 
-var teams = await qaseAPI.GetAllTeamsAsync("TEST", filterTestRunResult);
+var teams = await qaseAPI.GetAllTeamsAsync("TEST", filter);
 ```
 
 #### Get a specific team member ####
