@@ -136,5 +136,32 @@ namespace Qase.API.Qase
       return await _api.DeleteTestSuite(_api_token, code, id);
     }
     #endregion
+
+    #region Milestones
+    public async Task<MilestonesResponse> GetAllMilestonesAsync(string code, BaseFilter filterTestRunResult)
+    {
+      return await _api.GetAllMilestones(_api_token, code, filterTestRunResult.limit, filterTestRunResult.offset, filterTestRunResult.DictionaryFilters);
+    }
+
+    public async Task<SpecificMilestoneResponse> GetSpecificMilestoneAsync(string code, int id)
+    {
+      return await _api.GetSpecificMilestone(_api_token, code, id);
+    }
+
+    public async Task<MilestoneResponse> CreateMilestoneAsync(string code, MilestoneRequest milestoneRequest)
+    {
+      return await _api.CreateNewMilestone(_api_token, code, milestoneRequest);
+    }
+
+    public async Task<MilestoneResponse> UpdateMilestoneAsync(string code, int id, MilestoneRequest milestoneRequest)
+    {
+      return await _api.UpdateMilestone(_api_token, code, id, milestoneRequest);
+    }
+
+    public async Task<MilestoneResponse> DeleteMilestoneAsync(string code, int id)
+    {
+      return await _api.DeleteMilestone(_api_token, code, id);
+    }
+    #endregion
   }
 }
