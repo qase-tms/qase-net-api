@@ -2,13 +2,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Qase.API;
 using Qase.API.Qase;
 using Qase.API.Qase.Model;
-using Qase.API.Qase.Model.Projects;
 using Qase.API.Qase.Model.Suites;
-using Qase.API.Qase.Model.TestRunResults;
-using Qase.API.Qase.Model.TestRuns;
 using Refit;
 using System;
-using System.Collections.Generic;
 
 namespace Qase.Test
 {

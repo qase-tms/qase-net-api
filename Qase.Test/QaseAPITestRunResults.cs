@@ -2,9 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Qase.API;
 using Qase.API.Qase;
 using Qase.API.Qase.Model;
-using Qase.API.Qase.Model.Projects;
 using Qase.API.Qase.Model.TestRunResults;
-using Qase.API.Qase.Model.TestRuns;
 using Refit;
 using System;
 using System.Collections.Generic;
@@ -17,7 +15,7 @@ namespace Qase.Test
     [TestMethod]
     public void GetAllTestRunResults()
     {
-      QaseAPI qaseAPI = new QaseAPI();
+      QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
       try
       {
         BaseFilter filterTestRunResult = new BaseFilter();
@@ -39,14 +37,14 @@ namespace Qase.Test
     [TestMethod]
     public void GetSpecificTestRunResult()
     {
-      QaseAPI qaseAPI = new QaseAPI();
+      QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
       var testRunResult = qaseAPI.GetSpecificTestRunResultAsync("TEST", "5796a7fb165a0eff2a7de3436485154beff88afc").Result;
     }
 
     [TestMethod]
     public void AddTestRunResult()
     {
-      QaseAPI qaseAPI = new QaseAPI();
+      QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
 
       var steps = new List<StepTestRunResult>();
 
@@ -81,7 +79,7 @@ namespace Qase.Test
     [TestMethod]
     public void UpdateTestRunResult()
     {
-      QaseAPI qaseAPI = new QaseAPI();
+      QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
 
       var steps = new List<StepTestRunResult>();
       steps.Add(new StepTestRunResult
@@ -105,7 +103,7 @@ namespace Qase.Test
     [TestMethod]
     public void DeleteTestRunResult()
     {
-      QaseAPI qaseAPI = new QaseAPI();
+      QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
 
       var resp = qaseAPI.DeleteTestRunResultAsync("TEST", 4, "").Result;
     }

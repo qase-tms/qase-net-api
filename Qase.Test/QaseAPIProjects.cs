@@ -14,7 +14,7 @@ namespace Qase.Test
     [TestMethod]
     public void GetAllProjects()
     {
-      QaseAPI qaseAPI = new QaseAPI();
+      QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
       try
       {
         var projects = qaseAPI.GetAllProjectsAsync().Result;
@@ -33,14 +33,14 @@ namespace Qase.Test
     [TestMethod]
     public void GetSpecificProject()
     {
-      QaseAPI qaseAPI = new QaseAPI();
+      QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
       var project = qaseAPI.GetSpecificProjectAsync("TEST").Result;
     }
 
     [TestMethod]
     public void CreateNewProject()
     {
-      QaseAPI qaseAPI = new QaseAPI();
+      QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
       var project = qaseAPI.CreateNewProjectAsync(new CreateProjectRequest
       {
          Title = "TestNet",

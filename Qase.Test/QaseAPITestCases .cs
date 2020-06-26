@@ -2,7 +2,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Qase.API;
 using Qase.API.Qase;
 using Qase.API.Qase.Model;
-using Qase.API.Qase.Model.TestCases;
 using Refit;
 using System;
 using System.Collections.Generic;
@@ -16,7 +15,7 @@ namespace Qase.Test
     [TestMethod]
     public void GetAllTestCases()
     {
-      QaseAPI qaseAPI = new QaseAPI();
+      QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
       try
       {
         BaseFilter filterCases = new BaseFilter();
@@ -38,7 +37,7 @@ namespace Qase.Test
     [TestMethod]
     public void GetSpecificTestCase()
     {
-      QaseAPI qaseAPI = new QaseAPI();
+      QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
       var testCase = qaseAPI.GetSpecificTestCaseAsync("TEST", 1).Result;
     }
 
@@ -46,7 +45,7 @@ namespace Qase.Test
     [TestMethod]
     public void DeleteTestCase()
     {
-      QaseAPI qaseAPI = new QaseAPI();
+      QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
 
       var testCase = qaseAPI.DeleteTestCaseAsync("TEST", 1).Result;
 

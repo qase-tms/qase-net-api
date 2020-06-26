@@ -3,11 +3,8 @@ using Qase.API;
 using Qase.API.Qase;
 using Qase.API.Qase.Model;
 using Refit;
-using RestSharp;
 using System;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 
 namespace Qase.Test
 {
