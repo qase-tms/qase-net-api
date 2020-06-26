@@ -5,6 +5,7 @@ using Qase.API.Qase.Model.Milestones;
 using Qase.API.Qase.Model.Projects;
 using Qase.API.Qase.Model.SharedSteps;
 using Qase.API.Qase.Model.Suites;
+using Qase.API.Qase.Model.Teams;
 using Qase.API.Qase.Model.TestCases;
 using Qase.API.Qase.Model.TestPlans;
 using Qase.API.Qase.Model.TestRunResults;
@@ -254,6 +255,18 @@ namespace Qase.API.Qase
     public async Task<SpecificCustomFieldResponse> GetSpecificCustomFieldAsync(string code, int id)
     {
       return await _api.GetSpecificCustomField(_api_token, code, id);
+    }
+    #endregion
+
+    #region Teams
+    public async Task<TeamsResponse> GetAllTeamsAsync(string code, BaseFilter filterTestRunResult)
+    {
+      return await _api.GetAllTeams(_api_token, code, filterTestRunResult.limit, filterTestRunResult.offset);
+    }
+
+    public async Task<SpecificTeamResponse> GetSpecificTeamAsync(string code, int id)
+    {
+      return await _api.GetSpecificTeam(_api_token, code, id);
     }
     #endregion
   }

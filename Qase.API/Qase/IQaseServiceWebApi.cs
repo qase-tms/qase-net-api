@@ -5,6 +5,7 @@ using Qase.API.Qase.Model.Milestones;
 using Qase.API.Qase.Model.Projects;
 using Qase.API.Qase.Model.SharedSteps;
 using Qase.API.Qase.Model.Suites;
+using Qase.API.Qase.Model.Teams;
 using Qase.API.Qase.Model.TestCases;
 using Qase.API.Qase.Model.TestPlans;
 using Qase.API.Qase.Model.TestRunResults;
@@ -463,6 +464,29 @@ namespace Qase.API.Qase
     /// <returns></returns>
     [Get("/custom_field/{code}/{id}")]
     Task<SpecificCustomFieldResponse> GetSpecificCustomField([Header("Token")] string api_token, string code, int id);
+    #endregion
+
+    #region Teams
+    /// <summary>
+    /// Get all team members
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="limit"></param>
+    /// <param name="offset"></param>
+    /// <returns></returns>
+    [Get("/user")]
+    Task<TeamsResponse> GetAllTeams([Header("Token")] string api_token, string code, int limit, int offset);
+
+    /// <summary>
+    /// Get a specific team member
+    /// </summary>
+    /// <param name="api_token"></param>
+    /// <param name="code"></param>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Get("/user/{id}")]
+    Task<SpecificTeamResponse> GetSpecificTeam([Header("Token")] string api_token, string code, int id);
     #endregion
   }
 }
