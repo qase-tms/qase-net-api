@@ -436,7 +436,7 @@ var defects = await qaseAPI.GetSpecificDefectAsync("TEST", 1);
 This method is used to resolve defect through API. If defect is already resolved, you will get a message that defect is not found.
 
 ```C#
-var resp = qaseAPI.ResolveDefectAsync("TEST", 1)
+var resp = await qaseAPI.ResolveDefectAsync("TEST", 1)
 var id = resp.Result.Id;
 ```
 
@@ -444,6 +444,24 @@ var id = resp.Result.Id;
 This method completely deletes a defect from repository.
 
 ```C#
-var resp = qaseAPI.DeleteDefectAsync("TEST", 1);
+var resp = await qaseAPI.DeleteDefectAsync("TEST", 1);
 var id = resp.Result.Id;
+```
+
+### Custom Fields ###
+
+#### Get all custom fields ####
+This method allows to retrieve all custom fields for a specific project. You can you limit and offset params to paginate.
+
+```C#
+BaseFilter filterTestRunResult = new BaseFilter();
+
+var customFields = await qaseAPI.GetAllCustomFieldsAsync("TEST", filterTestRunResult);
+```
+
+#### Get a specific custom field ####
+This method allows to retrieve one custom fields for specific project by id.
+
+```C#
+var customField = await qaseAPI.GetSpecificCustomFieldAsync("TEST", 1);
 ```
