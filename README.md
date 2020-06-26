@@ -412,3 +412,38 @@ This method completely deletes a test plan from repository.
 var resp = qaseAPI.DeleteTestPlanAsync("TEST", 1);
 var id = resp.Result.Id;
 ```
+
+### Defects ###
+
+#### Get all defects ####
+This method allows to retrieve all defects stored in selected project. You can you limit and offset params to paginate.
+
+```C#
+BaseFilter filter = new BaseFilter();
+filter.DictionaryFilters.Add($"filters[{TypeFilter.status}]", StatusDefect.open.ToString());
+
+var defects = await qaseAPI.GetAllDefectsAsync("TEST", filter);
+```
+
+#### Get a specific defect ####
+This method allows to retrieve a specific defect.
+
+```C#
+var defects = await qaseAPI.GetSpecificDefectAsync("TEST", 1);
+```
+
+#### Resolve ####
+This method is used to resolve defect through API. If defect is already resolved, you will get a message that defect is not found.
+
+```C#
+var resp = qaseAPI.ResolveDefectAsync("TEST", 1)
+var id = resp.Result.Id;
+```
+
+#### Delete defect ####
+This method completely deletes a defect from repository.
+
+```C#
+var resp = qaseAPI.DeleteDefectAsync("TEST", 1);
+var id = resp.Result.Id;
+```

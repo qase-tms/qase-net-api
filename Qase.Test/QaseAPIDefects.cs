@@ -16,10 +16,10 @@ namespace Qase.Test
       QaseAPI qaseAPI = new QaseAPI("https://api.qase.io/v1", "your api token");
       try
       {
-        BaseFilter filterTestRunResult = new BaseFilter();
-        filterTestRunResult.DictionaryFilters.Add($"filters[{TypeFilter.status}]", StatusDefect.open.ToString());
+        BaseFilter filter = new BaseFilter();
+        filter.DictionaryFilters.Add($"filters[{TypeFilter.status}]", StatusDefect.open.ToString());
 
-        var defects = qaseAPI.GetAllDefectsAsync("TEST", filterTestRunResult).Result;
+        var defects = qaseAPI.GetAllDefectsAsync("TEST", filter).Result;
       }
       catch (WebApiException ex)
       {
